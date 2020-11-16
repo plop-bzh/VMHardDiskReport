@@ -3,10 +3,10 @@
     PowerCLI script that generates a HTML report from your vCenter
     to display the VM disk configuration
 .NOTES  
-    Author: jlg-io
+    Author: @jlg-io
     Version: 1.0
 .EXAMPLE
-    PS> .\Get-VMHardDiskReport.ps1
+    PS> .\VMHardDiskReport.ps1
 .LINK
     plop.bzh
 #>
@@ -63,7 +63,7 @@ FOREACH ($v in $vm) {
                 $ctrl = ($_ | Get-ScsiController).ExtensionData.DeviceInfo.Summary
                 $bus = (($_ | Get-ScsiController).ExtensionData.BusNumber).ToString()
                 $unitNumber = ($_.ExtensionData.UnitNumber).ToString()
-                '{0} ({1}:{2}) xxxx' -f $ctrl, $bus, $unitNumber
+                '{0} ({1}:{2})' -f $ctrl, $bus, $unitNumber
             }
         }
     },@{
